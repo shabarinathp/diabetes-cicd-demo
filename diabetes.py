@@ -12,7 +12,7 @@ import streamlit as st
 
 # ---------------- PAGE CONFIGURATION ----------------
 st.set_page_config(
-    page_title="Diabetes Prediction App",
+    page_title="Diabetes Prediction App from",
     page_icon="🩺",
     layout="centered"
 )
