@@ -1,0 +1,15 @@
+services:
+  diabetes_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: diabetes_streamlit_container
+
+    restart: unless-stopped
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      - ./logs:/app/logs
