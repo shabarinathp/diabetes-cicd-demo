@@ -1,0 +1,25 @@
+name: Deploy Diabetes App to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Connect to EC2 and deploy application
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/diabetes-cicd-demo
+            git pull origin main
+            docker compose up --build -d
+            docker ps
